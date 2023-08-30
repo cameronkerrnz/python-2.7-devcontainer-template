@@ -1,0 +1,5 @@
+# requests # installed via apt
+# redis # installed via apt
+# SQLAlchemy # installed via apt
+# nose # installed via apt
+# psycopg2-binary # installed via apt
