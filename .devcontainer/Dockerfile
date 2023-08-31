@@ -5,9 +5,12 @@ RUN apt-get update && apt-get install -y \
         python-pip \
         python-virtualenv \
         python-wheel \
+        \
+        python-psycopg2 \
         python-redis \
         python-requests \
-        python-psycopg2 \
+        python-sqlalchemy \
+        \
         curl jq redis
 
 RUN mkdir /venvs
@@ -17,6 +20,7 @@ RUN virtualenv /venvs/demo
 COPY demo/requirements-fluid.txt /venvs/demo.requirements.txt
 
 RUN set -eu; \
+    echo /usr/lib/python2.7/dist-packages >> /venvs/demo/lib/python2.7/site-packages/dist-packages.pth; \
     . /venvs/demo/bin/activate; \
     pip install -r /venvs/demo.requirements.txt; \
     pip freeze
